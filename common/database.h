@@ -234,6 +234,7 @@ public:
 	uint32	GetZoneID(const char* zonename);
 	uint8	GetPEQZone(uint32 zoneID, uint32 version);
 	const char*	GetZoneName(uint32 zoneID, bool ErrorUnknown = false);
+	uint8	GetZoneType(uint32 zoneID, uint32 version);
 	uint8	GetServerType();
 	bool	GetSafePoints(const char* short_name, uint32 version, float* safe_x = 0, float* safe_y = 0, float* safe_z = 0, int16* minstatus = 0, uint8* minlevel = 0, char *flag_needed = nullptr);
 	bool	GetSafePoints(uint32 zoneID, uint32 version, float* safe_x = 0, float* safe_y = 0, float* safe_z = 0, int16* minstatus = 0, uint8* minlevel = 0, char *flag_needed = nullptr) { return GetSafePoints(GetZoneName(zoneID), version, safe_x, safe_y, safe_z, minstatus, minlevel, flag_needed); }

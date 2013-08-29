@@ -1102,6 +1102,19 @@ bool IsShortDurationBuff(uint16 spell_id)
 	return false;
 }
 
+// Before this can be used, the ztype value for zones will need to be verified..
+// ..and this code will need to have the proper checks put into place -U
+bool IsSpellUsableThisZoneType(uint16 spell_id, uint8 zone_type)
+{
+	if((spell_id > 0) && (spell_id < SPDAT_RECORDS))
+	{
+		// This specifically for Bard Bot "Selo's Rhythm of Speed" song checks
+		if(spells[spell_id].zonetype == -1) { return true; }
+	}
+
+	return false;
+}
+
 const char* GetSpellName(int16 spell_id)
 {
     return( spells[spell_id].name );

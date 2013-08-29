@@ -3920,6 +3920,11 @@ void Bot::AI_Process() {
 			}
 
 		}
+		// This allows bards to cast songs while moving (and minimizes disruptions to Selo's Speed songs)
+		else if((GetClass() == BARD) && IsMoving() && AIthink_timer->Check() && !spellend_timer.Enabled())
+		{
+			if(GetBotStance() != BotStancePassive) { AI_IdleCastCheck(); }
+		}
 
 		if(AImovement_timer->Check()) {
 			if(GetFollowID()) {

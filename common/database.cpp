@@ -1352,6 +1352,36 @@ const char* Database::GetZoneName(uint32 zoneID, bool ErrorUnknown) {
 	return 0;
 }
 
+// returns <database>.zone.ztype - not <database>.zone.type
+uint8 Database::GetZoneType(uint32 zoneID, uint32 version)
+{
+	char errbuf[MYSQL_ERRMSG_SIZE];
+	char *query = 0;
+	MYSQL_RES *result;
+	MYSQL_ROW row;
+	int ztype = 0; // if there's a more appropriate default return value, please change it
+
+	if(RunQuery(query, MakeAnyLenString(&query, "SELECT ztype FROM zone WHERE zoneidnumber='%i' AND (version=%i OR version=0) ORDER BY version DESC", zoneID, version), errbuf, &result))
+	{
+		if(mysql_num_rows(result) > 0)
+		{
+			row = mysql_fetch_row(result);
+			ztype = atoi(row[0]);
+		}
+
+		safe_delete_array(query);
+		mysql_free_result(result);
+		return ztype;
+	}
+	else
+	{
+		std::cerr << "Error in GetZoneType query '" << query << "' " << errbuf << std::endl;
+	}
+
+	safe_delete_array(query);
+	return ztype;
+}
+
 uint8 Database::GetPEQZone(uint32 zoneID, uint32 version){
 	char errbuf[MYSQL_ERRMSG_SIZE];
 	char *query = 0;

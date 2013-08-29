@@ -1,5 +1,16 @@
 EQEMu Changelog (Started on Sept 24, 2003 15:50)
 -------------------------------------------------------
+== 08/29/2013 ==
+Uleat: Fixed an obscure bug where Bard Bot's were only casting 'Clarity' between levels 20 and 33 when Idle.
+Uleat: Changed Bard Bot Idle/IsMoving behavior to allow casting while not engaged and moving.
+Uleat: Converted current Bard Bot SpellType_Buffs to SpellType_InCombatBuffs to allow usage of a secondary song set. Rules set to original behavior:
+- 'Bots:BotBardUseInCombatSongsOutOfCombat' = 'true'
+- 'Bots:BotBardUseOutOfCombatSongs' = 'false'
+Uleat: Added 'zonetype' property/method to Zone/Database classes. Zone types (ztype) needs to be reviewed because it doesn't appear to match spdat.zonetype enums.
+Uleat: Added 'IsSpellUsableThisZoneType' method to spdat. Framework-only..should not be used until properly coded and zonetypes are qualified.
+required: 2013_08_29_Bot_Bard_InCombatBuff_Modification.sql
+optional: 2013_08_29_Bot_Bard_Song_Additions.sql
+
 == 08/20/2013 ==
 Uleat: Fix for bot pet spell buff corruption (existing db issues will correct themselves through pet death attrition)
 

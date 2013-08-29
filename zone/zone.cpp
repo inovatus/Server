@@ -850,6 +850,7 @@ Zone::Zone(uint32 in_zoneid, uint32 in_instanceid, const char* in_short_name)
 	zoneid = in_zoneid;
 	instanceid = in_instanceid;
 	instanceversion = database.GetInstanceVersion(instanceid);
+	zonetype = database.GetZoneType(in_zoneid, instanceversion);
 	zonemap = nullptr;
 	watermap = nullptr;
 	pathing = nullptr;

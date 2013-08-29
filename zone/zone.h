@@ -98,12 +98,14 @@ public:
 	bool	SaveZoneCFG();
 	bool	IsLoaded();
 	bool	IsPVPZone() { return pvpzone; }
+	bool	IsZoneType(uint8 ztype)		{ return (ztype == zonetype); }
 	inline const char*	GetLongName()	{ return long_name; }
 	inline const char*	GetFileName()	{ return file_name; }
 	inline const char*	GetShortName()	{ return short_name; }
 	inline const uint32	GetZoneID() const { return zoneid; }
 	inline const uint32	GetInstanceID() const { return instanceid; }
 	inline const uint16	GetInstanceVersion() const { return instanceversion; }
+	inline const uint8	GetZoneType() const { return zonetype; }
 
 	inline Timer* GetInstanceTimer() { return Instance_Timer; }
 
@@ -278,6 +280,7 @@ private:
 	char*	long_name;
 	char*	map_name;
 	bool pvpzone;
+	uint8	zonetype;
 	float	psafe_x, psafe_y, psafe_z;
 	uint32	pMaxClients;
 	bool	can_bind;
