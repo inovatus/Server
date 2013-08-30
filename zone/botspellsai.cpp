@@ -4,7 +4,6 @@
 #include "../common/StringUtil.h"
 
 bool Bot::AICastSpell(Mob* tar, uint8 iChance, uint16 iSpellTypes) {
-	_ZP(Bot_AICastSpell);
 
 	if (!tar) {
 		return false;
@@ -947,7 +946,6 @@ bool Bot::AI_PursueCastCheck() {
 	bool result = false;
 
 	if (AIautocastspell_timer->Check(false)) {
-		_ZP(Bot_AI_Process_pursue_cast);
 
 		AIautocastspell_timer->Disable();	//prevent the timer from going off AGAIN while we are casting.
 
@@ -978,7 +976,6 @@ bool Bot::AI_IdleCastCheck() {
 	bool result = false;
 
 	if (AIautocastspell_timer->Check(false)) {
-		_ZP(Bot_AI_IdleCastCheck);
 #if MobAI_DEBUG_Spells >= 25
 		cout << "Non-Engaged autocast check triggered: " << this->GetCleanName() << endl;
 #endif
@@ -1051,7 +1048,6 @@ bool Bot::AI_EngagedCastCheck() {
 	bool failedToCast = false;
 
 	if (GetTarget() && AIautocastspell_timer->Check(false)) {
-		_ZP(Bot_AI_Process_engaged_cast);
 
 		AIautocastspell_timer->Disable();	//prevent the timer from going off AGAIN while we are casting.
 

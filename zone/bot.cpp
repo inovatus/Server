@@ -3049,8 +3049,6 @@ void Bot::SaveTimers() {
 
 bool Bot::Process()
 {
-	_ZP(Bot_Process);
-
 	if(IsStunned() && stunned_timer.Check())
 	{
 		this->stunned = false;
@@ -3496,8 +3494,6 @@ float Bot::GetMaxMeleeRangeToTarget(Mob* target) {
 
 // AI Processing for the Bot object
 void Bot::AI_Process() {
-	_ZP(Mob_BOT_Process);
-
 	if(!IsAIControlled())
 		return;
 
@@ -3610,7 +3606,6 @@ void Bot::AI_Process() {
 
 	if(IsEngaged())
 	{
-		_ZP(Mob_BOT_Process_IsEngaged);
 
 		if(rest_timer.Enabled())
 			rest_timer.Disable();
@@ -3962,7 +3957,6 @@ void Bot::AI_Process() {
 
 // AI Processing for a Bot object's pet
 void Bot::PetAIProcess() {
-	_ZP(Bot_PET_Process);
 
 	if( !HasPet() || !GetPet() || !GetPet()->IsNPC())
 		return;
@@ -3989,7 +3983,6 @@ void Bot::PetAIProcess() {
 		return;
 
 	if (IsEngaged()) {
-		_ZP(Bot_PET_Process_IsEngaged);
 
 		if (botPet->IsRooted())
 			botPet->SetTarget(hate_list.GetClosest(botPet));
@@ -6373,8 +6366,6 @@ void Bot::AddToHateList(Mob* other, int32 hate, int32 damage, bool iYellForHelp,
 
 bool Bot::Attack(Mob* other, int Hand, bool FromRiposte, bool IsStrikethrough, bool IsFromSpell, ExtraAttackOptions *opts)
 {
-	_ZP(Bot_Attack);
-
 	if (!other) {
 		SetTarget(nullptr);
 		LogFile->write(EQEMuLog::Error, "A null Mob object was passed to Bot::Attack for evaluation!");
@@ -8675,8 +8666,6 @@ void Bot::AI_Stop() {
 //iOther the mob who is doing the looking. It should figure out
 //what iOther thinks about 'this'
 FACTION_VALUE Bot::GetReverseFactionCon(Mob* iOther) {
-	_ZP(Bot_GetReverseFactionCon);
-
 	if(iOther->IsBot()) {
 		return FACTION_ALLY;
 	}
@@ -9604,7 +9593,6 @@ bool Bot::CastSpell(uint16 spell_id, uint16 target_id, uint16 slot, int32 cast_t
 	bool Result = false;
 
 	if(zone && !zone->IsSpellBlocked(spell_id, GetX(), GetY(), GetZ())) {
-		_ZP(Bot_CastSpell);
 
 		mlog(SPELLS__CASTING, "CastSpell called for spell %s (%d) on entity %d, slot %d, time %d, mana %d, from item slot %d",
 			spells[spell_id].name, spell_id, target_id, slot, cast_time, mana_cost, (item_slot==0xFFFFFFFF)?999:item_slot);
@@ -16003,7 +15991,6 @@ void Bot::ProcessBotCommands(Client *c, const Seperator *sep) {
 // This function has been reworked for the caster bots, when engaged.
 // Healers bots must heal thoses who loose HP.
 bool EntityList::Bot_AICheckCloseBeneficialSpells(Bot* caster, uint8 iChance, float iRange, uint16 iSpellTypes) {
-	_ZP(EntityList_Bot_AICheckCloseBeneficialSpells);
 
 	if((iSpellTypes&SpellTypes_Detrimental) != 0) {
 		//according to live, you can buff and heal through walls...

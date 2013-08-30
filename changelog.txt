@@ -1,6 +1,8 @@
 EQEMu Changelog (Started on Sept 24, 2003 15:50)
 -------------------------------------------------------
 == 08/29/2013 ==
+KLS: Removed Common Profiler and Zone Profiler.  They're well past outdated status and are just code bloat.
+KLS: Fix for reported issue on forums with skills that could potentially be trained before a player achieved the level to train.
 Uleat: Fixed an obscure bug where Bard Bot's were only casting 'Clarity' between levels 20 and 33 when Idle.
 Uleat: Changed Bard Bot Idle/IsMoving behavior to allow casting while not engaged and moving.
 Uleat: Converted current Bard Bot SpellType_Buffs to SpellType_InCombatBuffs to allow usage of a secondary song set. Rules set to original behavior:
